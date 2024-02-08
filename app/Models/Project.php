@@ -10,7 +10,7 @@ class Project extends Model
 {
     use HasFactory;
 
-    protected $table = 'project';
+    protected $table = 'projects';
     public $timestamps = false;
     protected $fillable = [
         'id', // primary key

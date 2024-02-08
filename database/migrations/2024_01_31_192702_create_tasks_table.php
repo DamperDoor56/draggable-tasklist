@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            
+            $table->foreignId('project_id')->constrained();
+            $table->integer('priority'); // Make sure this line is present
             $table->timestamps();
             $table->softDeletes();
         });

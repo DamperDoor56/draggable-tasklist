@@ -17,7 +17,7 @@ class Task extends Model
         'project_id', // foreign key, int
         'priority', // int
         'title', // string
-        'descriptoin' // text
+        'description' // text
     ];
     protected $appends = [
         'created',
