@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Project;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class ProjectsSeeder extends Seeder
@@ -13,11 +12,10 @@ class ProjectsSeeder extends Seeder
      */
     public function run(): void
     {
-        for($i = 0; $i < 3; $i++){
+        for ($i = 0; $i < 3; $i++) {
             Project::create([
-                    "name"=> "Project".$i,
+                "name" => "Project" . $i,
             ]);
         }
-        //
     }
 }
