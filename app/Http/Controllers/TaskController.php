@@ -7,13 +7,11 @@ use App\Http\Requests\Task\ListTasksRequest;
 use App\Http\Requests\Task\ReorderTasksRequest;
 use App\Http\Requests\Task\UpdateTaskRequest;
 use App\Services\ProjectService;
+use App\Services\TaskService;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use TaskService;
 
 class TaskController extends Controller
 {
-    //
     protected ?TaskService $taskService = null;
     public function __construct(TaskService $taskService){
         $this->taskService = $taskService;
