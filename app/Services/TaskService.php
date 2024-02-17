@@ -96,14 +96,24 @@ class TaskService {
         // Initialize variables for constructing SQL querys
         $when_then = "";
         $where_in = "";
+        
+      // Extract task IDs and priorities into separate arrays
+        $ids = array_keys($items); // Get the task IDs from the $items array
+        $priorities = array_values($items); // Get the priorities from the $items array
+
+        // Move the priority of the selected task to a new position
+        $out_priority = array_splice($priorities, $start - 1, 1);
+        array_splice($priorities, $end - 1, 0, $out_priority);
+
         // Iterate through the updated priorities
-        foreach ($priorities as $out_k => $out_v){
-            // Get the task ID based on the new priority
-            $id = $ids[$out_v - 1];
+        foreach ($priorities as $out_k => $out_v) {
+            // Get the task ID based on the array key
+            $id = $ids[$out_k];
             // Construct SQL statements for each task to be updated
-            $when_then .= "WHEN ".$id." THEN ".($out_k + 1)." ";
-            $where_in .= $id.",";      
+            $when_then .= "WHEN " . $id . " THEN " . ($out_k + 1) . " ";
+            $where_in .= $id . ",";
         }
+
             // Get the table name for the Task model
             $table_name = (new Task())->getTable();
             // Construct the bulk update SQL query
